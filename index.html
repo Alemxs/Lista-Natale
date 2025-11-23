@@ -12,8 +12,8 @@
       background: linear-gradient(to bottom, #a6d8f0, #ffffff);
       color: #1f1f1f;
       overflow-x: hidden;
+      min-height: 100vh;
       position: relative;
-      min-height: 90vh;
     }
 
     .overlay {
@@ -24,20 +24,22 @@
       pointer-events: none;
     }
 
+    /* ===== CONTAINER ===== */
     .container {
-      max-width: 750px;
-      margin: 130px auto 60px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 40px;
+      width: 90%;
+      max-width: 700px;
+      margin: 120px auto 60px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
       border-radius: 18px;
       position: relative;
-      box-shadow: 0 0 15px rgba(255,255,255,0.6);
-      z-index: 10;
+      z-index: 10; /* sempre sopra le decorazioni */
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 
-    h1 { text-align: center; font-size: 2.7rem; color: #b30000; }
+    h1 { text-align: center; font-size: 2.5rem; color: #b30000; }
     p, li { font-size: 1.2rem; line-height: 1.7; }
-    .signature { text-align: right; margin-top: 40px; font-style: italic; font-size: 1.3rem; }
+    .signature { text-align: right; margin-top: 40px; font-style: italic; font-size: 1.2rem; }
 
     /* ===== NEVE ===== */
     .snowflake {
@@ -75,34 +77,27 @@
       box-shadow: 0 0 10px;
       animation: blink 1.5s infinite;
     }
-    .christmas-lights span:nth-child(1) { background: red; box-shadow: 0 0 10px red; animation-delay: 0s; }
-    .christmas-lights span:nth-child(2) { background: yellow; box-shadow: 0 0 10px yellow; animation-delay: 0.3s; }
-    .christmas-lights span:nth-child(3) { background: green; box-shadow: 0 0 10px green; animation-delay: 0.6s; }
-    .christmas-lights span:nth-child(4) { background: blue; box-shadow: 0 0 10px blue; animation-delay: 0.9s; }
-    .christmas-lights span:nth-child(5) { background: red; box-shadow: 0 0 10px red; animation-delay: 0s; }
-    .christmas-lights span:nth-child(6) { background: yellow; box-shadow: 0 0 10px yellow; animation-delay: 0.3s; }
-    .christmas-lights span:nth-child(7) { background: green; box-shadow: 0 0 10px green; animation-delay: 0.6s; }
-    .christmas-lights span:nth-child(8) { background: blue; box-shadow: 0 0 10px blue; animation-delay: 0.9s; }
+    .christmas-lights span:nth-child(1) { background: red; animation-delay: 0s; }
+    .christmas-lights span:nth-child(2) { background: yellow; animation-delay: 0.3s; }
+    .christmas-lights span:nth-child(3) { background: green; animation-delay: 0.6s; }
+    .christmas-lights span:nth-child(4) { background: blue; animation-delay: 0.9s; }
+    .christmas-lights span:nth-child(5) { background: red; animation-delay: 0s; }
+    .christmas-lights span:nth-child(6) { background: yellow; animation-delay: 0.3s; }
+    .christmas-lights span:nth-child(7) { background: green; animation-delay: 0.6s; }
+    .christmas-lights span:nth-child(8) { background: blue; animation-delay: 0.9s; }
+    @keyframes blink { 0%,100% { opacity:0.3; } 50% { opacity:1; } }
 
-    @keyframes blink {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
-    /* ===== SEGNAPOSTO PER DECORAZIONI ===== */
+    /* ===== DECORAZIONI ===== */
     .decor-left, .decor-right, .sleigh {
-      position: fixed;
-      z-index: 9;
+      position: absolute; /* absolute per rimanere sempre fuori dal container */
+      z-index: 0; /* sotto il container */
+      bottom: 0;
+      height: auto;
     }
-
-    .decor-left { bottom: 20px; left: 20px; width: 800px; } 
-    .decor-right { bottom: 20px; right: 20px; width: 550px; } 
-    .sleigh { top: 20px; left: -200px; width: 200px; animation: sleighMove 14s linear infinite; } 
-
-    @keyframes sleighMove {
-      from { transform: translateX(-200px); }
-      to { transform: translateX(150vw); }
-    }
+    .decor-left { left: 10px; max-width: 30%; }
+    .decor-right { right: 10px; max-width: 25%; }
+    .sleigh { top: 10px; left: -200px; width: 150px; animation: sleighMove 14s linear infinite; }
+    @keyframes sleighMove { from { transform: translateX(-200px); } to { transform: translateX(150vw); } }
 
     /* ===== PULSANTE MUSICA ===== */
     #playButton {
@@ -121,6 +116,41 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
     #playButton:hover { background: #ff0000; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .container { margin: 100px 20px; padding: 25px; }
+      h1 { font-size: 2.2rem; }
+      p, li { font-size: 1.1rem; }
+      .signature { font-size: 1.1rem; }
+      .decor-left { max-width: 25%; }
+      .decor-right { max-width: 20%; }
+      .sleigh { width: 120px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { margin: 80px 15px; padding: 20px; }
+      h1 { font-size: 1.8rem; }
+      p, li { font-size: 1rem; }
+      .signature { font-size: 1rem; }
+      .decor-left { max-width: 20%; }
+      .decor-right { max-width: 18%; }
+      .sleigh { width: 100px; }
+      .christmas-lights { height: 30px; }
+      .christmas-lights span { width: 15px; height: 15px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { margin: 60px 10px; padding: 15px; }
+      h1 { font-size: 1.5rem; }
+      p, li { font-size: 0.9rem; }
+      .signature { font-size: 0.9rem; }
+      .decor-left { max-width: 15%; }
+      .decor-right { max-width: 12%; }
+      .sleigh { width: 80px; }
+      .christmas-lights { height: 25px; }
+      .christmas-lights span { width: 12px; height: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -136,7 +166,8 @@
 
   <!-- Luci di Natale -->
   <div class="christmas-lights">
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
   </div>
 
   <!-- Segnaposto immagini -->
@@ -163,7 +194,7 @@
     const audio = document.getElementById("bgMusic");
     playButton.addEventListener("click", () => {
       audio.play();
-      playButton.style.display = "none"; // nasconde il pulsante dopo l'avvio
+      playButton.style.display = "none";
     });
   </script>
 
@@ -189,7 +220,6 @@
       <li>Lampadina targa (sono 2 mesi che è fulminata)</li>
       <li>Anabbaglianti bianchi</li>
       <li>portafoglio (quello slim)</li>
-      
     </ul>
 
     <p>
