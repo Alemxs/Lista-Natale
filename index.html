@@ -109,25 +109,9 @@
   <div class="overlay"></div>
 
   <!-- Musica in background -->
-  <audio id="bgMusic" autoplay loop muted>
-  <source src="Christmas.mp3" type="audio/mpeg">
+  <audio autoplay loop>
+    <source src="./Christmas.mp3" type="audio/mpeg">
   </audio>
-  
-  <script>
-  const audio = document.getElementById('bgMusic');
-  
-  // Quando l'utente interagisce (mousemove o touch), togli il mute
-  function unmuteAudio() {
-    audio.muted = false;
-    audio.volume = 0.5; // volume desiderato
-    window.removeEventListener('mousemove', unmuteAudio);
-    window.removeEventListener('touchstart', unmuteAudio);
-  }
-  
-  window.addEventListener('mousemove', unmuteAudio);
-  window.addEventListener('touchstart', unmuteAudio);
-  </script>
-
 
   <!-- Luci di Natale -->
   <div class="christmas-lights">
@@ -195,4 +179,3 @@
   </div>
 </body>
 </html>
-
