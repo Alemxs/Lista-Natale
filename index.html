@@ -11,7 +11,7 @@
       background: linear-gradient(to bottom, #a6d8f0, #ffffff);
       color: #1f1f1f;
       overflow-x: hidden;
-      min-height: 100vh;
+      min-height: 90vh;
       position: relative;
     }
 
@@ -81,7 +81,7 @@
     .decor-left, .decor-right, .sleigh {
       position: fixed;
       height: auto;
-      z-index: 5; /* decorazioni dietro il container di default */
+      z-index: 5;
     }
     .decor-left { left: 10px; max-width: 25%; bottom: 20px; }
     .decor-right { right: 10px; max-width: 20%; bottom: 20px; }
@@ -107,46 +107,50 @@
     #playButton:hover { background: #ff0000; }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 1500px) {
+      .decor-left,
+      .decor-right {
+        position: absolute !important;
+        z-index: 11;
+        bottom: 20px;
+      }
+      .decor-left { left: 10px; max-width: 22%; }
+      .decor-right { right: 10px; max-width: 20%; }
+      .sleigh { width: 140px; }
+    }
+
     @media (max-width: 1024px) {
-      .container { margin: 100px 20px; padding: 25px; }
+      .container {
+        margin: 100px auto 25px; /* auto centra il container */
+        padding: 30px 25px;      /* più spazio interno */
+      }
       h1 { font-size: 2.2rem; }
       p, li { font-size: 1.1rem; }
       .decor-left { max-width: 20%; bottom: 20px; }
       .decor-right { max-width: 18%; bottom: 20px; }
       .sleigh { width: 120px; }
     }
+
     @media (max-width: 768px) {
       .container { margin: 80px 15px; padding: 20px; }
       h1 { font-size: 1.8rem; }
       p, li { font-size: 1rem; }
-      /* decorazioni davanti al container */
-      .decor-left,
-      .decor-right {
-        position: absolute !important;
-        bottom: 5px;
-        z-index: 11; /* aumentato */
-      }
-      .decor-left { max-width: 18%; left: 10px; }
-      .decor-right { max-width: 15%; right: 10px; }
+      .decor-left { max-width: 18%; left: 10px; bottom: 10px; }
+      .decor-right { max-width: 15%; right: 10px; bottom: 10px; }
       .sleigh { width: 100px; }
       .christmas-lights span { width: 15px; height: 15px; }
     }
+
     @media (max-width: 480px) {
       .container { margin: 60px 10px; padding: 15px; }
       h1 { font-size: 1.5rem; }
       p, li { font-size: 0.9rem; }
-      .decor-left,
-      .decor-right {
-        position: absolute !important;
-        bottom: 2px;
-        z-index: 11; /* aumentato */
-        max-width: 18vw;
-      }
-      .decor-left { left: 4px; }
-      .decor-right { right: 4px; }
+      .decor-left { max-width: 18vw; left: 4px; bottom: 5px; }
+      .decor-right { max-width: 18vw; right: 4px; bottom: 5px; }
       .sleigh { width: 80px; }
       .christmas-lights span { width: 12px; height: 12px; }
     }
+
     @media (max-width: 350px) {
       .decor-left,
       .decor-right {
