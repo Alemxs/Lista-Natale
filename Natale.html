@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lettera di Natale</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background: linear-gradient(to bottom, #a6d8f0, #ffffff);
+      color: #1f1f1f;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 90vh;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 130px auto 60px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 18px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+      z-index: 10;
+    }
+
+    h1 { text-align: center; font-size: 2.7rem; color: #b30000; }
+    p, li { font-size: 1.2rem; line-height: 1.7; }
+    .signature { text-align: right; margin-top: 40px; font-style: italic; font-size: 1.3rem; }
+
+    /* ===== NEVE ===== */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 1.2rem;
+      pointer-events: none;
+      animation: fall linear infinite;
+      z-index: 9999;
+      user-select: none;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10vh) translateX(0); opacity: 1; }
+      100% { transform: translateY(110vh) translateX(50px); opacity: 0; }
+    }
+
+    /* ===== LUCI DI NATALE ===== */
+    .christmas-lights {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: space-around;
+      pointer-events: none;
+      z-index: 8;
+    }
+    .christmas-lights span {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px;
+      animation: blink 1.5s infinite;
+    }
+    .christmas-lights span:nth-child(1) { background: red; box-shadow: 0 0 10px red; animation-delay: 0s; }
+    .christmas-lights span:nth-child(2) { background: yellow; box-shadow: 0 0 10px yellow; animation-delay: 0.3s; }
+    .christmas-lights span:nth-child(3) { background: green; box-shadow: 0 0 10px green; animation-delay: 0.6s; }
+    .christmas-lights span:nth-child(4) { background: blue; box-shadow: 0 0 10px blue; animation-delay: 0.9s; }
+    .christmas-lights span:nth-child(5) { background: red; box-shadow: 0 0 10px red; animation-delay: 0s; }
+    .christmas-lights span:nth-child(6) { background: yellow; box-shadow: 0 0 10px yellow; animation-delay: 0.3s; }
+    .christmas-lights span:nth-child(7) { background: green; box-shadow: 0 0 10px green; animation-delay: 0.6s; }
+    .christmas-lights span:nth-child(8) { background: blue; box-shadow: 0 0 10px blue; animation-delay: 0.9s; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* ===== SEGNAPOSTO PER DECORAZIONI ===== */
+    .decor-left, .decor-right, .sleigh {
+      position: fixed;
+      z-index: 9;
+    }
+
+    .decor-left { bottom: 20px; left: 20px; width: 800px; } /* Albero ingrandito */
+    .decor-right { bottom: 20px; right: 20px; width: 550px; } /* Pupazzo ingrandito */
+    .sleigh { top: 20px; left: -200px; width: 200px; animation: sleighMove 14s linear infinite; } /* Slitta */
+
+    @keyframes sleighMove {
+      from { transform: translateX(-200px); }
+      to { transform: translateX(150vw); }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <!-- Musica in background -->
+  <audio autoplay loop>
+    <source src="./Christmas.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Luci di Natale -->
+  <div class="christmas-lights">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Segnaposto immagini -->
+  <img src="./Albero.png" class="decor-left" alt="Albero di Natale">
+  <img src="./Olaf.png" class="decor-right" alt="Pupazzo di neve">
+  <img src="./Babbo-natale.png" class="sleigh" alt="Slitta di Babbo Natale">
+
+  <!-- Neve -->
+  <script>
+    const numFlakes = 80;
+    for (let i = 0; i < numFlakes; i++) {
+      let snow = document.createElement("div");
+      snow.classList.add("snowflake");
+      snow.innerHTML = "❄";
+      snow.style.left = Math.random() * 100 + "vw";
+      snow.style.fontSize = (Math.random() * 20 + 10) + "px";
+      snow.style.animationDuration = (Math.random() * 8 + 4) + "s";
+      snow.style.animationDelay = (Math.random() * 5) + "s";
+      document.body.appendChild(snow);
+    }
+  </script>
+
+  <div class="container">
+    <h1>Lettera di Natale</h1>
+
+    <p>Caro Babbo Natale,</p>
+    <p>
+      Negli anni passati non ti ho mai scritto la letterina, tuttavia quest’anno ho deciso di fare un’eccezione, del resto tutti meritano di essere felici e quindi eccomi qui, quest’anno avrai l’onore di potermi portare qualche regalo.
+    </p>
+
+    <ul>
+      <li>Audi RS6 Nuova(Non giocattolo so che ci hai pensato, POVERO!)</li>
+      <li>ASUS ROG STRIX NVIDIA GeForce RTX 4090 O24G GAMING</li>
+      <li>Viaggio in Giappone</li>
+      <li>Racchetta da Padel (il campione è stanco di utilizzare quelle del campo)</li>
+      <li>Giubbotto</li>
+      <li>Vestiti</li>
+      <li>Scarpe (nere o blu)</li>
+      <li>Mutande (scorte in esaurimento...presto vento in poppa!)</li>
+      <li>Deodorante stick</li>
+      <li>Profumatore auto</li>
+      <li>Lampadina targa (sono 2 mesi che è fulminata)</li>
+      <li>Anabbaglianti bianchi</li>
+      <li>portafoglio (quello slim)</li>
+      
+    </ul>
+
+    <p>
+      So che starai pensando: “SOLO!? Con che faccia mi presento a lei con queste cavolate”, tuttavia sai come si dice, a Natale siamo tutti più buoni. Perciò sì, non preoccuparti di niente, queste cose vanno più che bene.
+    </p>
+
+    <p class="signature">
+      Con affetto e umiltà, <br>
+      Alessandro Ferrara
+    </p>
+
+    <p>
+      <strong>P.S.</strong> quasi dimenticavo, ecco un piccolo extra nel caso non fossi soddisfatto:
+      <a href="https://y.co/yacht/lady-lara?purchase=purchase" target="_blank">Goleador</a>
+    </p>
+  </div>
+</body>
+</html>
