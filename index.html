@@ -95,21 +95,42 @@
       z-index: 9;
     }
 
-    .decor-left { bottom: 20px; left: 20px; width: 800px; } /* Albero ingrandito */
-    .decor-right { bottom: 20px; right: 20px; width: 550px; } /* Pupazzo ingrandito */
-    .sleigh { top: 20px; left: -200px; width: 200px; animation: sleighMove 14s linear infinite; } /* Slitta */
+    .decor-left { bottom: 20px; left: 20px; width: 800px; } 
+    .decor-right { bottom: 20px; right: 20px; width: 550px; } 
+    .sleigh { top: 20px; left: -200px; width: 200px; animation: sleighMove 14s linear infinite; } 
 
     @keyframes sleighMove {
       from { transform: translateX(-200px); }
       to { transform: translateX(150vw); }
     }
+
+    /* ===== PULSANTE MUSICA ===== */
+    #playButton {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 20px;
+      background: #b30000;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 20;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    #playButton:hover { background: #ff0000; }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
 
+  <!-- Pulsante per avviare musica -->
+  <button id="playButton">🎵 Avvia Musica</button>
+
   <!-- Musica in background -->
-  <audio autoplay loop>
+  <audio id="bgMusic" loop>
     <source src="./Christmas.mp3" type="audio/mpeg">
   </audio>
 
@@ -136,6 +157,14 @@
       snow.style.animationDelay = (Math.random() * 5) + "s";
       document.body.appendChild(snow);
     }
+
+    // Avvio musica al click del pulsante
+    const playButton = document.getElementById("playButton");
+    const audio = document.getElementById("bgMusic");
+    playButton.addEventListener("click", () => {
+      audio.play();
+      playButton.style.display = "none"; // nasconde il pulsante dopo l'avvio
+    });
   </script>
 
   <div class="container">
